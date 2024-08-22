@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -15,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.databinding.ActivityImageUploadBinding
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import java.util.UUID
 
 class imageUploadActivity : AppCompatActivity() {
     lateinit var binding: ActivityImageUploadBinding
@@ -38,10 +40,10 @@ class imageUploadActivity : AppCompatActivity() {
         getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let {
                 this@imageUploadActivity.uri = it
-                binding.ivuploadImage.setImageURI(it)
+               binding.ivuploadImage.setImageURI(it)
             }
         }
-        imageView = binding.ivuploadImage
+       // imageView = binding.ivuploadImage
         binding.btnchoose.setOnClickListener{
             // how to choose the image from galary and store it in imageview
 //            val intent = Intent()
@@ -49,7 +51,7 @@ class imageUploadActivity : AppCompatActivity() {
 //            intent.type = "image/*"
 //            startActivityForResult(intent , 100)
             // Approcach 2
-            getContent.launch("image/*")
+            getContent.launch("application/pdf")
         }
 
         // TODO upload the image in the Fire base
@@ -75,7 +77,18 @@ class imageUploadActivity : AppCompatActivity() {
             progressDialog.show()
 
             // on below storage it will create the storage referance for fire base storage
-            val ref: StorageReference = FirebaseStorage.getInstance().getReference("images")
+            val ref: StorageReference = FirebaseStorage.getInstance().reference.child(UUID.randomUUID().toString())
+
+            ref.putFile(uri!!).addOnSuccessListener {
+               progressDialog.dismiss()
+                Toast.makeText(this , "Image Uploaded" , Toast.LENGTH_SHORT).show()
+
+
+            }
+                .addOnFailureListener{
+                    progressDialog.dismiss()
+                    Toast.makeText(this , "Image not Uploaded" , Toast.LENGTH_SHORT).show()
+                }
 
         }
 

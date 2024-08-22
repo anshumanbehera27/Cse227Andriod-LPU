@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="button_choose_file" type="id" />
+    <item name="button_upload_file" type="id" />
+    <item name="pdfView" type="id" />
+    <item name="etEmplName" type="id" />
+</resources>

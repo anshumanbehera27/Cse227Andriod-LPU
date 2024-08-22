@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.storage)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -55,6 +56,11 @@ dependencies {
     // for google Auth
     implementation(libs.play.services.auth)
     implementation (libs.firebase.auth)
+
+    // how to add the pdf file
+
+
+
 
 
 
