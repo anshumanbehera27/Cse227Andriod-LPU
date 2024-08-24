@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -12,7 +13,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class DeatilsEmpActivity : AppCompatActivity() {
-    lateinit var dbref: DatabaseReference
+   // lateinit var dbref: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_deatils_emp)
@@ -40,6 +41,9 @@ class DeatilsEmpActivity : AppCompatActivity() {
         // Apply  How to Update The data
         UpdateButton.setOnClickListener {
 
+            startActivity(Intent(this , UpdateDataActivity::class.java))
+          //  updateEmpData(tvname , tvAge , tvSalary)
+
             Toast.makeText(this , "Update The Data" , Toast.LENGTH_SHORT).show()
         }
 
@@ -50,19 +54,18 @@ class DeatilsEmpActivity : AppCompatActivity() {
 
 
     }
-    private fun updateEmpData(tvname: TextView, tvAge: TextView, tvSalary: TextView){
-        dbref = FirebaseDatabase.getInstance().getReference().child("employees")
-        val name = tvname.text.toString()
-        val age = tvAge.text.toString().toInt()
-        val salary = tvSalary.text.toString().toInt()
-        val emp = mapOf<String , Any>(
-            "name" to name,
-            "age" to age,
-            "salary" to salary
-        )
-
-        dbref.child(name).updateChildren(emp).addOnCompleteListener {
-            Toast.makeText(this , "Data Updated" , Toast.LENGTH_SHORT).show()
-        }
+//    private fun updateEmpData(tvname: TextView, tvAge: TextView, tvSalary: TextView){
+//        dbref = FirebaseDatabase.getInstance().getReference().child("employees")
+//        val name = tvname.text.toString()
+//        val age = tvAge.text.toString().toInt()
+//        val salary = tvSalary.text.toString().toInt()
+//        val emp = mapOf<String , Any>(
+//            "name" to name,
+//            "age" to age,
+//            "salary" to salary
+//        )
+//
+//        dbref.child(name).updateChildren(emp).addOnCompleteListener {
+//            Toast.makeText(this , "Data Updated" , Toast.LENGTH_SHORT).show()
+//        }
     }
-}

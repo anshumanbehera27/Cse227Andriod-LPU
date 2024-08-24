@@ -73,7 +73,6 @@ class FatchDataActivity : AppCompatActivity() {
                     recyclerView.visibility = View.GONE
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 // Handle the error, for example, by showing an error message
                 loadingData.text = "Failed to load data: ${error.message}"
