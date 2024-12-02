@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import UpdateDataActivity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -27,7 +28,6 @@ class DeatilsEmpActivity : AppCompatActivity() {
         val tvSalary: TextView = findViewById(R.id.tvEmpSalary)
         val UpdateButton: Button = findViewById(R.id.btnUpdate)
         val DeleteButton: Button = findViewById(R.id.btnDelete)
-
 
       if (tvname != null && tvAge != null && tvSalary != null) {
           tvname.text = empName

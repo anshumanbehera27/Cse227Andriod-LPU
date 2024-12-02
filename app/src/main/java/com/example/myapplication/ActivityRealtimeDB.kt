@@ -41,30 +41,19 @@ class ActivityRealtimeDB : AppCompatActivity() {
             dbref.child(empid).setValue(employee)
                 .addOnCompleteListener {
                     Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_SHORT).show()
-
                     etname.text.clear()
                     etsalary.text.clear()
                     etage.text.clear()
-
-
                 }.addOnFailureListener { err ->
                     Toast.makeText(this, "Error ${err.message}", Toast.LENGTH_SHORT).show()
-
                 }
-
-
         }
         btnfatch.setOnClickListener{
             // how to fatch the data from firebase
             val empid = etname.text.toString()
             if (empid.isNotEmpty()){
-
             }
-
-
-
         }
-
 
     }
 }

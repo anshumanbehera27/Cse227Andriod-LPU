@@ -17,10 +17,9 @@ class signUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
+        // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
-
 
         binding.btsignup.setOnClickListener{
 

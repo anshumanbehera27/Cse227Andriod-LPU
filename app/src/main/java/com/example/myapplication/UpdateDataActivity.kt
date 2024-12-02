@@ -20,6 +20,7 @@ class UpdateDataActivity : AppCompatActivity() {
     private lateinit var btnUpdateData: Button
     private lateinit var dbref: DatabaseReference
 
+    
     var name: String = ""
     var Age: Int = 0
     var salary: Int = 0

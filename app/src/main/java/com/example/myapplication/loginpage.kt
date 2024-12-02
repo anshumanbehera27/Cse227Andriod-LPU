@@ -36,7 +36,6 @@ class loginpage : AppCompatActivity() {
      3 - add all the dependecy
      4 -
      */
-
         // Set the click listener for the sign-up button
         binding.btsignup.setOnClickListener {
             startActivity(Intent(this, signUp::class.java))
